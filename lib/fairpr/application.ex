@@ -15,7 +15,8 @@ defmodule Fairpr.Application do
       # Start a worker by calling: Fairpr.Worker.start_link(arg)
       # {Fairpr.Worker, arg},
       # Start to serve requests, typically the last entry
-      FairprWeb.Endpoint
+      FairprWeb.Endpoint,
+      {AshAuthentication.Supervisor, [otp_app: :fairpr]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

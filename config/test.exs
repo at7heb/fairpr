@@ -1,4 +1,6 @@
 import Config
+config :fairpr, token_signing_secret: "fwkDNFNGI9wT8fDZo8b7UsZfieI19O9e"
+config :bcrypt_elixir, log_rounds: 1
 config :ash, policies: [show_policy_breakdowns?: true], disable_async?: true
 
 # Configure your database
