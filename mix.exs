@@ -102,14 +102,13 @@ defmodule Fairpr.MixProject do
     ]
   end
 
-    defp usage_rules do
-      # Example for those using claude.
-      [
-        file: "AGENTS.md",
-        # rules to include directly in CLAUDE.md
-        # use a regex to match multiple deps, or atoms/strings for specific ones
-        usage_rules: [:usage_rules, :ash, ~r/^ash_/],
-      ]
-    end
-
+  defp usage_rules do
+    # Example for those using claude.
+    [
+      file: "AGENTS.md",
+      # rules to include directly in CLAUDE.md
+      # use a regex to match multiple deps, or atoms/strings for specific ones
+      usage_rules: [:usage_rules, :ash, ~r/^ash_/]
+    ]
+  end
 end
