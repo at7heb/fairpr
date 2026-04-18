@@ -16,5 +16,12 @@ defmodule Fairpr.Accounts do
     end
 
     resource Fairpr.Accounts.UserRole
+
+    resource Fairpr.Accounts.Student do
+      define :list_students, action: :read
+      define :get_student, action: :read, get_by: [:id]
+      define :create_student, action: :create
+      define :update_student, action: :update
+    end
   end
 end

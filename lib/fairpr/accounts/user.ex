@@ -317,6 +317,10 @@ defmodule Fairpr.Accounts.User do
       source_attribute_on_join_resource :user_id
       destination_attribute_on_join_resource :role_id
     end
+
+    has_many :students_as_current_therapist, Fairpr.Accounts.Student do
+      destination_attribute :current_therapist_id
+    end
   end
 
   identities do
