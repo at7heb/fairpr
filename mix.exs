@@ -12,7 +12,8 @@ defmodule Fairpr.MixProject do
       deps: deps(),
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
       listeners: [Phoenix.CodeReloader],
-      consolidate_protocols: Mix.env() != :dev
+      consolidate_protocols: Mix.env() != :dev,
+      usage_rules: usage_rules()
     ]
   end
 
@@ -48,6 +49,7 @@ defmodule Fairpr.MixProject do
       {:ash_postgres, "~> 2.0"},
       {:ash, "~> 3.0"},
       {:igniter, "~> 0.6", only: [:dev, :test]},
+      {:usage_rules, "~> 1.1", only: [:dev]},
       {:phoenix, "~> 1.8.5"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.13"},
@@ -99,4 +101,15 @@ defmodule Fairpr.MixProject do
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
     ]
   end
+
+    defp usage_rules do
+      # Example for those using claude.
+      [
+        file: "AGENTS.md",
+        # rules to include directly in CLAUDE.md
+        # use a regex to match multiple deps, or atoms/strings for specific ones
+        usage_rules: [:usage_rules, :ash, ~r/^ash_/],
+      ]
+    end
+
 end
