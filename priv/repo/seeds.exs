@@ -12,3 +12,9 @@
 
 seeds_roles = Path.join(__DIR__, "seeds_roles.exs")
 Code.require_file(seeds_roles)
+
+seeds_admin_user = Path.join(__DIR__, "seeds_admin_user.exs")
+Code.require_file(seeds_admin_user)
+
+seeds_students = Path.join(__DIR__, "seeds_students.exs")
+Code.require_file(seeds_students)

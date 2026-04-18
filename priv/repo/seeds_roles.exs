@@ -4,7 +4,7 @@
 
 require Ash.Query
 
-names = ["Director", "Therapist", "Supervisor", "Scholar"]
+names = ["Director", "Therapist", "Supervisor", "Scholar", "Administrator"]
 
 Enum.each(names, fn name ->
   query =

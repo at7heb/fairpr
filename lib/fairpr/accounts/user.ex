@@ -270,7 +270,7 @@ defmodule Fairpr.Accounts.User do
     update :update do
       require_atomic? false
 
-      accept [:maximum_students]
+      accept [:maximum_students, :first_name, :middle_initial, :last_name]
 
       argument :roles, {:array, :uuid} do
         allow_nil? true
@@ -295,6 +295,23 @@ defmodule Fairpr.Accounts.User do
 
     attribute :email, :ci_string do
       allow_nil? false
+      public? true
+    end
+
+    attribute :first_name, :string do
+      allow_nil? false
+      default ""
+      public? true
+    end
+
+    attribute :middle_initial, :string do
+      allow_nil? true
+      public? true
+    end
+
+    attribute :last_name, :string do
+      allow_nil? false
+      default ""
       public? true
     end
 

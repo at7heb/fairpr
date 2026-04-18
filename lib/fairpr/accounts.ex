@@ -7,6 +7,7 @@ defmodule Fairpr.Accounts do
 
     resource Fairpr.Accounts.User do
       define :update_user, action: :update
+      define :get_user_by_email, action: :get_by_email
     end
 
     resource Fairpr.Accounts.Role do
