@@ -266,10 +266,26 @@ defmodule Fairpr.Accounts.User do
       # Generates an authentication token for the user
       change AshAuthentication.GenerateTokenChange
     end
+
+    update :update do
+      require_atomic? false
+
+      accept [:maximum_students]
+
+      argument :roles, {:array, :uuid} do
+        allow_nil? true
+      end
+
+      change manage_relationship(:roles, type: :append_and_remove)
+    end
   end
 
   policies do
     bypass AshAuthentication.Checks.AshAuthenticationInteraction do
+      authorize_if always()
+    end
+
+    policy action(:update) do
       authorize_if always()
     end
   end
@@ -287,6 +303,20 @@ defmodule Fairpr.Accounts.User do
     end
 
     attribute :confirmed_at, :utc_datetime_usec
+
+    attribute :maximum_students, :integer do
+      allow_nil? false
+      default 0
+      public? true
+    end
+  end
+
+  relationships do
+    many_to_many :roles, Fairpr.Accounts.Role do
+      through Fairpr.Accounts.UserRole
+      source_attribute_on_join_resource :user_id
+      destination_attribute_on_join_resource :role_id
+    end
   end
 
   identities do

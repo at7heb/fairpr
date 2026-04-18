@@ -9,3 +9,6 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+seeds_roles = Path.join(__DIR__, "seeds_roles.exs")
+Code.require_file(seeds_roles)
